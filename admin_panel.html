@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админка | Coffee City</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Дополнительно для админки */
+    .admin-nav {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .admin-nav button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #3b2a1a;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .admin-nav button.active {
+      background-color: #5a3e29;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #e6d3b1;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <h1 class="logo">Coffee City Admin</h1>
+    <button id="logoutBtn" style="background-color:#5a3e29; padding:8px 12px; color:#fff; border:none; border-radius:6px; cursor:pointer;">Выйти</button>
+  </div>
+</header>
+
+<main class="container-main">
+  <section class="container">
+    <div class="admin-nav">
+      <button class="active" data-section="users">Пользователи</button>
+      <button data-section="orders">Заказы</button>
+      <button data-section="news">Новости</button>
+      <button data-section="comments">Комментарии</button>
+    </div>
+
+    <div id="adminContent">
+      <!-- Таблицы подгружаются сюда -->
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 Coffee City</p>
+</footer>
+
+<script>
+  // Проверка авторизации
+  if(localStorage.getItem('adminLogged') !== 'true'){
+    window.location.href = 'admin-login.html';
+  }
+
+  const adminContent = document.getElementById('adminContent');
+  const navButtons = document.querySelectorAll('.admin-nav button');
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      navButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const section = btn.dataset.section;
+      loadSection(section);
+    });
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('adminLogged');
+    window.location.href = 'admin-login.html';
+  });
+
+  function loadSection(section){
+    if(section === 'users'){
+      adminContent.innerHTML = `
+        <h3>Пользователи</h3>
+        <table>
+          <tr><th>ID</th><th>Имя</th><th>Email</th><th>Роль</th></tr>
+          <tr><td>1</td><td>Admin</td><td>admin@test.com</td><td>admin</td></tr>
+          <tr><td>2</td><td>Иван</td><td>user@test.com</td><td>user</td></tr>
+        </table>
+      `;
+    } else if(section === 'orders'){
+      adminContent.innerHTML = `
+        <h3>Заказы</h3>
+        <table>
+          <tr><th>ID</th><th>Пользователь</th><th>Товар</th><th>Кол-во</th><th>Статус</th></tr>
+          <tr><td>1</td><td>Иван</td><td>Капучино</td><td>2</td><td>В обработке</td></tr>
+        </table>
+      `;
+    } else if(section === 'news'){
+      adminContent.innerHTML = `
+        <h3>Новости</h3>
+        <table>
+          <tr><th>ID</th><th>Заголовок</th><th>Дата</th></tr>
+          <tr><td>1</td><td>Новый сезон кофе</td><td>17.12.2025</td></tr>
+        </table>
+      `;
+    } else if(section === 'comments'){
+      adminContent.innerHTML = `
+        <h3>Комментарии</h3>
+        <table>
+          <tr><th>ID</th><th>Пользователь</th><th>Комментарий</th><th>Дата</th></tr>
+          <tr><td>1</td><td>Иван</td><td>Очень вкусный латте!</td><td>17.12.2025</td></tr>
+        </table>
+      `;
+    }
+  }
+
+  // Загружаем первую секцию по умолчанию
+  loadSection('users');
+</script>
+
+</body>
+</html>
