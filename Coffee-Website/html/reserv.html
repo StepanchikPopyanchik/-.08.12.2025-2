@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Бронирование | Coffee City</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+          <h1 class="logo">Coffee City</h1>
+          <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="menu.html">Меню</a>
+            <a href="reserv.html">Бронирование</a>
+            <a href="login.html" class="active">Вход</a>
+            <a href="register.html">Регистрация</a>
+            <a href="admin-login.html">Админка</a>
+          </nav>
+        </div>
+      </header>
+<section class="page-title">
+  <h2>Забронировать столик</h2>
+  <p>Выберите дату, время и количество гостей</p>
+</section>
+
+<section class="reservation container">
+  <form class="reservation-form">
+    <label for="name">Имя</label>
+    <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+    <label for="phone">Телефон</label>
+    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+
+    <label for="date">Дата</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Время</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="guests">Количество гостей</label>
+    <input type="number" id="guests" name="guests" min="1" max="10" value="1" required>
+
+    <label for="notes">Комментарий</label>
+    <textarea id="notes" name="notes" placeholder="Особые пожелания" rows="4"></textarea>
+
+    <button type="submit">Забронировать</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>© 2025 Coffee City</p>
+</footer>
+
+</body>
+</html>

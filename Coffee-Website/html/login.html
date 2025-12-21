@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход | Coffee City</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <h1 class="logo">Coffee City</h1>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="menu.html">Меню</a>
+      <a href="reserv.html">Бронирование</a>
+      <a href="login.html" class="active">Вход</a>
+      <a href="register.html">Регистрация</a>
+      <a href="admin-login.html">Админка</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-title">
+  <h2>Вход в аккаунт</h2>
+  <p>Введите свои данные для авторизации</p>
+</section>
+
+<section class="auth container">
+  <form class="auth-form">
+    <label for="loginEmail">E-mail</label>
+    <input type="email" id="loginEmail" placeholder="example@mail.com" required>
+
+    <label for="loginPassword">Пароль</label>
+    <input type="password" id="loginPassword" placeholder="Введите пароль" required>
+
+    <button type="submit">Войти</button>
+    <p style="margin-top:15px;">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>© 2025 Coffee City</p>
+</footer>
+
+</body>
+</html>
